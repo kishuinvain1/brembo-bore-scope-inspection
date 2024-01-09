@@ -99,8 +99,8 @@ def drawBoundingBoxDefect(saved_image ,x, y, w, h, cl, cf):
     txt_start_pnt = (x-w//2, y-h//2-15)
     
     
-    img = cv2.rectangle(img, start_pnt, end_pnt, (255,0,0), 10)
-    img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 5, cv2.LINE_AA)		
+    img = cv2.rectangle(img, start_pnt, end_pnt, (255,0,0), 5)
+    img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 3, cv2.LINE_AA)		
     
     return img
 
@@ -135,9 +135,7 @@ def main():
     st.title('BoreScope Inspection')
     image, svd_img = load_image()
     result = st.button('Predict')
-    if result:
-        st.write('Calculating results...')
-        
+    if result:    
 	    #To Extract ROI
         rf = Roboflow(api_key="kJNEcyxKtkAT9FmgW8x6")
         project = rf.workspace().project("brembo-bore-inspection")
