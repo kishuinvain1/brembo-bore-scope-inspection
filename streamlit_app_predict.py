@@ -77,7 +77,7 @@ def detectDefect(cl, x, y, w, h, cnf, saved_image):
         cl = defect_results['predictions'][i]['class']
         cf = defect_results['predictions'][i]['confidence']
 
-        sd_image = drawBoundingBoxDefect(roi,x,y,w,h,cl,cf)
+        sd_image = drawBoundingBoxDefect(sd_image,x,y,w,h,cl,cf)
 
     cv2.imwrite("final_res.jpg", sd_image)
     st.image(sd_image, caption="Defect Results")
@@ -99,7 +99,7 @@ def drawBoundingBoxDefect(saved_image ,x, y, w, h, cl, cf):
     
     
     img = cv2.rectangle(img, start_pnt, end_pnt, (255,0,0), 10)
-    img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 0, 0), 10, cv2.LINE_AA)		
+    img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 5, cv2.LINE_AA)		
     
     return img
 
