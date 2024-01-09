@@ -68,6 +68,7 @@ def detectDefect(cl, x, y, w, h, cnf, saved_image):
     print("defect detection results are....")
     print(defect_results)
 
+    sd_image = roi.copy()
     for i in range(len(defect_results['predictions'])):
         x = defect_results['predictions'][i]['x']
         y = defect_results['predictions'][i]['y']
