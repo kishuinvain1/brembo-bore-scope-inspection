@@ -68,10 +68,41 @@ def detectDefect(cl, x, y, w, h, cnf, saved_image):
     print("defect detection results are....")
     print(defect_results)
 
-	
+    for i in range(len(defect_results['predictions'])):
+        x = defect_results['predictions'][i]['x']
+        y = defect_results['predictions'][i]['y']
+        w = defect_results['predictions'][i]['width']
+        h = defect_results['predictions'][i]['height']
+        cl = defect_results['predictions'][i]['class']
+        cf = defect_results['predictions'][i]['confidence']
+
+        sd_image = drawBoundingBoxDefect(roi,x,y,w,h,cl,cf)
+
+    cv2.imwrite("final_res.jpg", sd_image)
+    st.image(sd_image, caption="Defect Results")
+
+
+def drawBoundingBoxDefect(saved_image ,x, y, w, h, cl, cf):
+    #img = Image.open(saved_image)
     
-	
+
+    #img = cv2.imread(saved_image)
+    img = cv2.cvtColor(saved_image,cv2.COLOR_BGR2RGB)
+    x = int(x)
+    y = int(y)
+    w = int(w)
+    h = int(h)
+    start_pnt = (x-w//2,y-h//2)
+    end_pnt = (x+w//2, y+h//2)
+    txt_start_pnt = (x-w//2, y-h//2-15)
     
+    
+    img = cv2.rectangle(img, start_pnt, end_pnt, (0,255,0), 10)
+    img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 255, 0), 10, cv2.LINE_AA)		
+    
+    return img
+
+
 def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     #img = Image.open(saved_image)
     
