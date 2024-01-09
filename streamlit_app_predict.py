@@ -99,7 +99,7 @@ def drawBoundingBoxDefect(saved_image ,x, y, w, h, cl, cf):
     
     
     img = cv2.rectangle(img, start_pnt, end_pnt, (255,0,0), 10)
-    img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 3, (255, 0, 0), 10, cv2.LINE_AA)		
+    img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 0, 0), 10, cv2.LINE_AA)		
     
     return img
 
