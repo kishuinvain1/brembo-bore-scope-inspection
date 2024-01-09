@@ -37,7 +37,7 @@ def loaddetDefectModel():
     print("...loading...Defect Check Model..")
     rf = Roboflow(api_key="kJNEcyxKtkAT9FmgW8x6")
     project = rf.workspace().project("brembo-bore-inspection-defect")
-    model = project.version(1).model
+    model = project.version(2).model
     return model
 
 
